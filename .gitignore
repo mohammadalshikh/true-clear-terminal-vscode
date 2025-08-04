@@ -3,6 +3,9 @@
 !.vscode/extensions.json
 !.vscode/tasks.json
 
+# Extension packages
+*.vsix
+
 # Auto-generated test files (ignore completely - use suite tests only)
 src/test/extension.test.ts
 out/test/extension.test.js

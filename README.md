@@ -1,13 +1,14 @@
 # True Clear Terminal
 
-Reliable way to clear VS Code integrated terminal, solving common issues with `Terminal: Clear` keyboard shortcut not clearing scroll buffer.
+This extension clears the currently focused terminal as well as its scrollback buffer, unlike the built-in `Terminal: Clear` command which only hides the output. That solves the issue with old commands showing up suddenly while typing.
+
 
 ## Features
 
 - **True terminal clearing**: Completely clears the terminal screen and cancels any current input
 - **Cross-platform**: Works on Windows (PowerShell, CMD) and macOS/Linux (Unix terminals)
 
-<!-- ![Demo](demo.gif) -->
+<img src="demo.gif" alt="True Clear Terminal Demo" width="600">
 
 ## Usage
 
@@ -18,11 +19,6 @@ Reliable way to clear VS Code integrated terminal, solving common issues with `T
 1. Open Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`)
 2. Type `True Clear Terminal`
 3. Press Enter
-
-## Requirements
-
-- **Node.js**: Version 20.18.2 or higher
-- **VS Code**: Version 1.102.0 or higher
 
 ## Supported Terminals
 
@@ -44,6 +40,12 @@ Reliable way to clear VS Code integrated terminal, solving common issues with `T
 4. Click Install
 
 ### For Development
+
+#### Requirements
+
+- **Node.js**: Version 20.18.2 or higher
+- **VS Code**: Version 1.102.0 or higher
+
 ```bash
 # Clone the repository
 git clone https://github.com/mohammadalshikh/true-clear-terminal-vscode.git
@@ -65,6 +67,10 @@ code .
 - Initial release
 - Cross-platform terminal clearing
 - Support for Windows (PowerShell, CMD) and Unix systems
+
+### 0.0.2
+- Adding demo
+- Updating description
 
 ## License
 
