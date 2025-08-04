@@ -7,8 +7,7 @@ Reliable way to clear VS Code integrated terminal, solving common issues with `T
 - **True terminal clearing**: Completely clears the terminal screen and cancels any current input
 - **Cross-platform**: Works on Windows (PowerShell, CMD) and macOS/Linux (Unix terminals)
 
-<!-- Add your demo GIF here -->
-![Demo](demo.gif)
+<!-- ![Demo](demo.gif) -->
 
 ## Usage
 
