@@ -72,6 +72,9 @@ code .
 - Adding demo
 - Updating description
 
+### 0.0.3
+- Fix extension icon
+
 ## License
 
 MIT - [LICENSE](LICENSE)
