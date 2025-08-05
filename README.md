@@ -13,7 +13,9 @@ This extension clears the currently focused terminal as well as its scrollback b
 ## Usage
 
 ### Method 1: Keyboard Shortcut
-- Press `Ctrl+Shift+K` to clear the active terminal
+To clear the active terminal:
+- Windows/Linux: `Ctrl+Shift+K`
+- MacOS: `Cmd+K`
 
 ### Method 2: Command Palette
 1. Open Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`)
@@ -63,17 +65,9 @@ code .
 
 ## Release Notes
 
-### 0.0.1
+### 1.0.0
 - Initial release
-- Cross-platform terminal clearing
 - Support for Windows (PowerShell, CMD) and Unix systems
-
-### 0.0.2
-- Adding demo
-- Updating description
-
-### 0.0.3
-- Fix extension icon
 
 ## License
 

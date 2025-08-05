@@ -2,7 +2,7 @@
 	"name": "true-clear-terminal",
 	"displayName": "True Clear Terminal",
 	"description": "Clear terminal output and scrollback buffer",
-	"version": "0.0.3",
+	"version": "1.0.0",
 	"license": "MIT",
 	"publisher": "mohammadalshikh",
 	"repository": {
