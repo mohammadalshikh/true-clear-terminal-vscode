@@ -69,6 +69,9 @@ code .
 - Initial release
 - Support for Windows (PowerShell, CMD) and Unix systems
 
+### 1.0.1
+- Enable/disable skip shell command
+
 ## License
 
 MIT - [LICENSE](LICENSE)
