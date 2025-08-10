@@ -8,13 +8,13 @@ This extension clears the currently focused terminal as well as its scrollback b
 - **True terminal clearing**: Completely clears the terminal screen and cancels any current input
 - **Cross-platform**: Works on Windows (PowerShell, CMD) and macOS/Linux (Unix terminals)
 
-<img src="demo.gif" alt="True Clear Terminal Demo" width="600">
+<img src="media/demo.gif" alt="True Clear Terminal Demo" width="600">
 
 ## Usage
 
 ### Method 1: Keyboard Shortcut
 To clear the active terminal:
-- Windows/Linux: `Ctrl+Shift+K`
+- Windows/Linux: `Ctrl+K`
 - MacOS: `Cmd+K`
 
 ### Method 2: Command Palette
@@ -37,7 +37,7 @@ To clear the active terminal:
 
 ### From VS Code Marketplace
 1. Open VS Code
-2. Go to Extensions (`Ctrl+Shift+X`)
+2. Go to Extensions (`Ctrl+Shift+X` / `Cmd+Shift+X`)
 3. Search for "True Clear Terminal"
 4. Click Install
 
@@ -58,19 +58,9 @@ npm install
 
 # Build the extension
 npm run compile
-code .
 
 # Test in VS Code (Press F5 to launch Extension Development Host)
 ```
-
-## Release Notes
-
-### 1.0.0
-- Initial release
-- Support for Windows (PowerShell, CMD) and Unix systems
-
-### 1.0.1
-- Enable/disable skip shell command
 
 ## License
 

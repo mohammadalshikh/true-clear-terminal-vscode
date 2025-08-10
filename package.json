@@ -2,14 +2,14 @@
 	"name": "true-clear-terminal",
 	"displayName": "True Clear Terminal",
 	"description": "Clear terminal output and scrollback buffer",
-	"version": "1.0.1",
+	"version": "1.0.3",
 	"license": "MIT",
 	"publisher": "mohammadalshikh",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/mohammadalshikh/true-clear-terminal-vscode.git"
 	},
-	"icon": "icon.png",
+	"icon": "media/icon.png",
 	"engines": {
 		"vscode": "^1.102.0"
 	},
@@ -35,21 +35,11 @@
 		"keybindings": [
 			{
 				"command": "trueClearTerminal.clear",
-				"key": "ctrl+shift+k",
+				"key": "ctrl+k",
 				"mac": "cmd+k",
 				"when": "terminalFocusInAny"
 			}
-		],
-		"configuration": {
-			"title": "True Clear Terminal",
-			"properties": {
-				"trueClearTerminal.skipShell": {
-					"type": "boolean",
-					"default": true,
-					"description": "Enable Ctrl+K override in terminal. If disabled, user will need to use a different keybinding to clear the terminal."
-				}
-			}
-		}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run package",
@@ -81,6 +71,7 @@
 		"mocha": "^10.8.2",
 		"npm-run-all": "^4.1.5",
 		"sinon": "^19.0.2",
-		"typescript": "^5.8.3"
+		"typescript": "^5.8.3",
+		"vsce": "^2.15.0"
 	}
 }
