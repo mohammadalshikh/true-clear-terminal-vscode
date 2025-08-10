@@ -1,30 +1,69 @@
 import * as vscode from 'vscode';
 
-export function activate(context: vscode.ExtensionContext) {
+function checkConfig() {
+	// Skip shell config
 	const config = vscode.workspace.getConfiguration();
+	const configInspection = config
+		.inspect('terminal.integrated.commandsToSkipShell');
 
-	// Get only global settings
-	const globalCommands = config.inspect(
-		'terminal.integrated.commandsToSkipShell'
-	)?.globalValue as string[] || [];
+	// Global and workspace versions
+	const globalCommands = configInspection?.globalValue as string[] || [];
+	const workspaceCommands = configInspection?.workspaceValue as string[] || [];
 
-	// Add command if not in global settings
-	if (!globalCommands.includes('trueClearTerminal.clear')) {
-		const updatedCommands = [
+
+	if (!globalCommands
+		.includes('trueClearTerminal.clear')
+	) {
+		const updatedGlobalCommands = [
 			...globalCommands,
 			'trueClearTerminal.clear'
 		];
 
-		config.update(
-			'terminal.integrated.commandsToSkipShell',
-			updatedCommands,
-			vscode.ConfigurationTarget.Global
-		);
+		config
+			.update(
+				'terminal.integrated.commandsToSkipShell',
+				updatedGlobalCommands,
+				vscode.ConfigurationTarget.Global
+			);
 	}
 
-	const clearDisposable = vscode.commands.registerCommand(
-		'trueClearTerminal.clear', () => {
+	// Add to workspace settings IF skip shell was added there
+	if (configInspection?.workspaceValue !== undefined
 
+		&& Array.isArray(workspaceCommands)
+	) {
+		if (!workspaceCommands.includes('trueClearTerminal.clear')) {
+
+			const updatedWorkspaceCommands = [
+				...workspaceCommands,
+				'trueClearTerminal.clear'
+			];
+
+			config
+				.update(
+					'terminal.integrated.commandsToSkipShell',
+					updatedWorkspaceCommands,
+					vscode.ConfigurationTarget.Workspace
+				);
+		}
+	}
+}
+
+export function activate(context: vscode.ExtensionContext) {
+
+	checkConfig();
+
+	const checkConfigListener = vscode.workspace.onDidChangeConfiguration(
+		(e: vscode.ConfigurationChangeEvent) => {
+			if (e.affectsConfiguration('terminal.integrated.commandsToSkipShell')) {
+				checkConfig();
+			}
+		}
+	);
+
+	const clearDisposable = vscode.commands.registerCommand(
+
+		'trueClearTerminal.clear', () => {
 			const terminal = vscode.window.activeTerminal;
 
 			if (!terminal) {
@@ -43,55 +82,11 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	);
 
-	const configChangeListener = vscode.workspace.onDidChangeConfiguration((e: vscode.ConfigurationChangeEvent) => {
-		if (e.affectsConfiguration(
-			'terminal.integrated.commandsToSkipShell')
-		) {
-			const config = vscode.workspace.getConfiguration();
-
-			// Get only global settings
-			const globalCommands = config.inspect('terminal.integrated.commandsToSkipShell')?.globalValue as string[] || [];
-
-			// Add command if not in global settings
-			if (!globalCommands.includes('trueClearTerminal.clear')) {
-				const updatedCommands = [
-					...globalCommands,
-					'trueClearTerminal.clear'
-				];
-
-				config.update(
-					'terminal.integrated.commandsToSkipShell',
-					updatedCommands,
-					vscode.ConfigurationTarget.Global
-				);
-			}
-		}
-	});
 
 	context.subscriptions.push(
-		clearDisposable,
-		configChangeListener
+		checkConfigListener,
+		clearDisposable
 	);
 }
 
-export function deactivate() {
-	const config = vscode.workspace.getConfiguration();
-
-	// Get only global settings
-	const globalCommands = config.inspect(
-		'terminal.integrated.commandsToSkipShell'
-	)?.globalValue as string[] || [];
-
-	if (globalCommands.includes('trueClearTerminal.clear')) {
-
-		const updatedCommands = globalCommands.filter(
-			(cmd: string) => cmd !== 'trueClearTerminal.clear'
-		);
-
-		config.update(
-			'terminal.integrated.commandsToSkipShell',
-			updatedCommands,
-			vscode.ConfigurationTarget.Global
-		);
-	}
-}
+export function deactivate() { }
