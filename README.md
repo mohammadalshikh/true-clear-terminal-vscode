@@ -1,3 +1,7 @@
+<a href="https://marketplace.visualstudio.com/items?itemName=mohammadalshikh.true-clear-terminal">
+  <img alt="Installs" src="https://img.shields.io/visual-studio-marketplace/i/mohammadalshikh.true-clear-terminal" />
+</a>
+
 # True Clear Terminal
 
 This extension clears the currently focused terminal as well as its scrollback buffer, unlike the built-in `Terminal: Clear` command which only hides the output. That solves the issue with old commands showing up suddenly while typing.
